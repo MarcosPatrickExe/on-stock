@@ -17,7 +17,7 @@ interface BestSellersProps {
 
 export function BestSellers({ setCartCount }: BestSellersProps) {
   return (
-    <div className="mt-12 flex flex-col h-[1000px] w-full">
+    <div className="mt-12 flex flex-col h-fit w-full">
       <h2 className="text-white text-4xl font-medium w-full text-center">
         Mais Vendidos
       </h2>
@@ -71,6 +71,9 @@ export function BestSellers({ setCartCount }: BestSellersProps) {
           setCartCount={setCartCount}
         />
       </div>
+      <button className=" mb-20 text-white w-[8vw] self-center mt-8 text-[1vw] border-2 border-purple py-1 px-6 hover:bg-purple font-openSans font-semibold">
+        Ver Mais
+      </button>
     </div>
   )
 }

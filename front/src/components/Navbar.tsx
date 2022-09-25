@@ -16,7 +16,7 @@ export function Navbar({ cartCount }: NavbarProps) {
               behavior: 'smooth',
             })
           }
-          className="text-white text-base hover:text-purple font-openSans font-semibold focus:text-purple"
+          className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple"
         >
           Home
         </button>
@@ -27,27 +27,27 @@ export function Navbar({ cartCount }: NavbarProps) {
               behavior: 'smooth',
             })
           }
-          className="text-white text-base hover:text-purple font-openSans font-semibold focus:text-purple"
+          className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple"
         >
           Mais Vendidos
         </button>
-        <button className="text-white text-base hover:text-purple font-openSans font-semibold focus:text-purple">
+        <button className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple">
           Categorias
         </button>
-        <button className="text-white text-base hover:text-purple font-openSans font-semibold focus:text-purple">
+        <button className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple">
           Sobre
         </button>
-        <button className="text-white text-base hover:text-purple font-openSans mr-12 font-semibold focus:text-purple">
+        <button className="text-white text-[1vw] hover:text-purple font-openSans mr-[4vw] font-semibold focus:text-purple">
           Entre em Contato
         </button>
 
-        <button className=" text-white text-base border-2 border-purple py-1 px-6 hover:bg-purple font-openSans font-semibold">
+        <button className=" text-white text-[1vw] border-2 border-purple py-1 px-6 hover:bg-purple font-openSans font-semibold">
           Login
         </button>
-        <button className=" text-white text-base bg-purple  px-6 -ml-4 hover:bg-purple/75 font-openSans font-semibold peer">
+        <button className=" text-white text-[1vw] bg-purple  px-6 -ml-4 hover:bg-purple/75 font-openSans font-semibold peer">
           Carrinho
         </button>
-        <span className=" text-white text-base border-2 border-purple py-1 px-4 -ml-8 font-openSans font-semibold peer-hover:border-purple/75">
+        <span className=" text-white text-[1vw] border-2 border-purple py-1 px-4 -ml-8 font-openSans font-semibold peer-hover:border-purple/75">
           {cartCount}
         </span>
       </div>
