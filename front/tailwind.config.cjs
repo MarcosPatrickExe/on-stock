@@ -12,6 +12,7 @@ module.exports = {
         textSec: '#D1D1D1',
         productDiv: '#141415',
         productBack: 'rgba(0, 0, 0, 0.20)',
+        about: '#242629',
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],

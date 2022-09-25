@@ -34,7 +34,10 @@ export function Navbar({ cartCount }: NavbarProps) {
         <button className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple">
           Categorias
         </button>
-        <button className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple">
+        <button
+          onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+          className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple"
+        >
           Sobre
         </button>
         <button className="text-white text-[1vw] hover:text-purple font-openSans mr-[4vw] font-semibold focus:text-purple">

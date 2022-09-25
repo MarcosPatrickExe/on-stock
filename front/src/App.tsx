@@ -3,7 +3,9 @@ import { BestSellers } from './components/BestSellers'
 import { Brands } from './components/Brands'
 import { Home } from './components/Home'
 import { Navbar } from './components/Navbar'
+import Promo from '../src/assets/promo.png'
 import './main.css'
+import { About } from './components/About'
 
 function App() {
   const [cartCount, setCartCount] = useState(0)
@@ -15,6 +17,8 @@ function App() {
       <Home />
       <Brands />
       <BestSellers setCartCount={setCartCount} />
+      <img src={Promo} alt="Promo Banner" className="w-full" />
+      <About />
     </div>
   )
 }
