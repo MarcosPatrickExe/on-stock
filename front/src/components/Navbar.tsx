@@ -1,13 +1,20 @@
+import { Link, useNavigate } from 'react-router-dom'
+
 interface NavbarProps {
   cartCount: number
 }
 
 export function Navbar({ cartCount }: NavbarProps) {
+  const navigate = useNavigate()
+
   return (
     <div className="bg-dark w-full h-24 flex flex-row align-middle items-center px-12 backdrop-blur-lg pt-4 sticky top-0 z-10">
-      <h1 className="text-3xl text-white font-bold ml-2 whitespace-nowrap bg-purple px-4 py-2 ">
-        ON STOCK
-      </h1>
+      <Link to={'/'}>
+        <a className="text-3xl text-white font-bold ml-2 whitespace-nowrap bg-purple px-4 py-2 ">
+          ON STOCK
+        </a>
+      </Link>
+
       <div className="flex flex-row justify-end gap-8 w-full">
         <button
           onClick={() =>
@@ -31,7 +38,10 @@ export function Navbar({ cartCount }: NavbarProps) {
         >
           Mais Vendidos
         </button>
-        <button className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple">
+        <button
+          onClick={() => navigate('/categorias')}
+          className="text-white text-[1vw] hover:text-purple font-openSans font-semibold focus:text-purple"
+        >
           Categorias
         </button>
         <button

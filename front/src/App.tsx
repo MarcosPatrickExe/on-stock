@@ -1,25 +1,27 @@
-import { useState } from 'react'
-import { BestSellers } from './components/BestSellers'
-import { Brands } from './components/Brands'
-import { Home } from './components/Home'
-import { Navbar } from './components/Navbar'
-import Promo from '../src/assets/promo.png'
+import React, { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Landing from './pages/Landing'
+import Categories from './pages/Categories'
 import './main.css'
-import { About } from './components/About'
 
-function App() {
+export interface IApp {}
+
+const App: React.FC<IApp> = props => {
   const [cartCount, setCartCount] = useState(0)
-  //Lift State Up
 
   return (
-    <div className="max-w-[1344] mx-auto flex items-center flex-col">
-      <Navbar cartCount={cartCount} />
-      <Home />
-      <Brands />
-      <BestSellers setCartCount={setCartCount} />
-      <img src={Promo} alt="Promo Banner" className="w-full" />
-      <About />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Landing cartCount={cartCount} setCartCount={setCartCount} />}
+        />
+        <Route
+          path="/categorias"
+          element={<Categories cartCount={cartCount} setCartCount={setCartCount} />}
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
