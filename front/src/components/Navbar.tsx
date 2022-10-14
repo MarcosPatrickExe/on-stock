@@ -54,7 +54,10 @@ export function Navbar({ cartCount }: NavbarProps) {
           Entre em Contato
         </button>
 
-        <button className=" text-white text-[1vw] border-2 border-purple py-1 px-6 hover:bg-purple font-openSans font-semibold">
+        <button
+          onClick={() => navigate('/login')}
+          className=" text-white text-[1vw] border-2 border-purple py-1 px-6 hover:bg-purple font-openSans font-semibold"
+        >
           Login
         </button>
         <button className=" text-white text-[1vw] bg-purple  px-6 -ml-4 hover:bg-purple/75 font-openSans font-semibold peer">
