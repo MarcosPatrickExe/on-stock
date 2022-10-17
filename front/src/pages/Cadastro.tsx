@@ -1,11 +1,33 @@
 import { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import BACKEND_URL from '../utils/urlRequest'
+import {BACKEND_URL} from '../utils/urlRequest'
 
 
-export default function Cadastro() {
+function validate( formDataInputs: {[attr:string] :FormDataEntryValue } ){
+   let isValid :boolean = true;
+
+   Object.entries<FormDataEntryValue>( formDataInputs).forEach( (attribute)=>{
+        let [propertyName, propertyValue] = attribute;
+
+       // alert(`prop: ${propertyName} // val: ${propertyName}`);
+
+        if(propertyName=="login" && propertyValue.toString().length==0 || 
+           propertyName=="password" && propertyValue.toString().length==0 ||
+           propertyName=="name" && propertyValue.toString().length==0 ||
+           propertyName=="email" && propertyValue.toString().length==0
+          ){
+                isValid = false;
+          }
+   })
+
+   return isValid;
+}
+
+
+export default function Cadastro( ) {
   const navigate = useNavigate()
 
+  
 
   function handleSignupForm(event: FormEvent){
       event.preventDefault();
@@ -14,22 +36,26 @@ export default function Cadastro() {
       const formDataInputs = Object.fromEntries( form.entries() );
 
     // Object.keys(formDataInputs).forEach((chave)=>alert(`Nome da chave: ${chave}`) ) 
+      
 
+      if( validate( formDataInputs ) ){
 
-      fetch(`${BACKEND_URL}/cadastro`, {
-         method: "POST",
-         headers: {"Content-Type": "application/json"},
-         body: JSON.stringify({
-              name: formDataInputs.name,
-              email: formDataInputs.email,
-              login: formDataInputs.login,
-              password: formDataInputs.password,
-              address: formDataInputs.address,
-              phone: formDataInputs.phone
-         })
-      }).then( response =>alert("Dados enviados com sucesso!! Status: "+response.status) )
-        .catch( error=> alert("Houve um erro no cadastro do usuário!! "+error))
-
+            fetch(`${BACKEND_URL}/signup`, {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                    name: formDataInputs.name,
+                    email: formDataInputs.email,
+                    login: formDataInputs.login,
+                    password: formDataInputs.password,
+                    address: formDataInputs.address,
+                    phone: formDataInputs.phone
+              })
+            }).then( data =>alert("Dados enviados com sucesso!! Status: "+data.status) )
+              .catch( error=> alert("Houve um erro no cadastro do usuário!! "+error))
+       }else{
+            alert("Os campos de Login, Senha, Nome e Email são obrigatórios!!!");
+       }
   }
 
 
