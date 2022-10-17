@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useState } from 'react';
-import BACKEND_URL from '../utils/urlRequest'
+import {BACKEND_URL} from '../utils/urlRequest'
 
 
 export default function Login() {
