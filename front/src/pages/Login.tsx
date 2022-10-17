@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useState } from 'react';
-
+import BACKEND_URL from '../utils/urlRequest'
 
 
 export default function Login() {
@@ -18,20 +18,22 @@ export default function Login() {
       else
          setPasswordValue( value as string);
 
-      alert(`Input name: ${name}: ${value}`);
+   // alert(`Input name: ${name}: ${value}`);
   }
 
 
   function handleSendForm(event :FormEvent){
         event.preventDefault();
 
-        fetch("https://localhost:3000/login", {
-            method: 'POST',
-            headers: {'Content-Type': 'application-json'}
-        })
-
-        
-        
+      fetch(`${BACKEND_URL}/login`, {
+         method: "POST",
+         headers: {"Content-Type": "application/json"},
+         body: JSON.stringify({
+              login: loginValue,
+              password: passwordValue
+         })
+      }).then( response =>alert("Login efetuado com sucesso!! Status: "+response.status) )
+        .catch( error=> alert("Houve um erro de login!! "+error))
   }
 
 
@@ -48,7 +50,7 @@ export default function Login() {
       <form
      //   action="#"
         method="post"
-        className="mt-6 flex flex-col w-96  text-white text-left gap-8 text-2xl"
+        className="mt-6 flex flex-col w-96  text-white text-left gap-6 text-2xl "
         onSubmit={ handleSendForm }
       >
         <h2 className="text-white font-semibold text-6xl mt-10 bg-purple py-8 text-center">
@@ -91,7 +93,7 @@ export default function Login() {
           Login
         </button>
         <a
-          className="text-left text-sm hover:underline -mt-4"
+          className="text-left text-sm hover:underline -mt-4 "
           onClick={() => navigate('/cadastro')}
         >
           Não tem uma conta? Criar conta

@@ -1,7 +1,37 @@
+import { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
+import BACKEND_URL from '../utils/urlRequest'
+
 
 export default function Cadastro() {
   const navigate = useNavigate()
+
+
+  function handleSignupForm(event: FormEvent){
+      event.preventDefault();
+
+      const form = new FormData( event.target as HTMLFormElement);
+      const formDataInputs = Object.fromEntries( form.entries() );
+
+    // Object.keys(formDataInputs).forEach((chave)=>alert(`Nome da chave: ${chave}`) ) 
+
+
+      fetch(`${BACKEND_URL}/cadastro`, {
+         method: "POST",
+         headers: {"Content-Type": "application/json"},
+         body: JSON.stringify({
+              name: formDataInputs.name,
+              email: formDataInputs.email,
+              login: formDataInputs.login,
+              password: formDataInputs.password,
+              address: formDataInputs.address,
+              phone: formDataInputs.phone
+         })
+      }).then( response =>alert("Dados enviados com sucesso!! Status: "+response.status) )
+        .catch( error=> alert("Houve um erro no cadastro do usuário!! "+error))
+
+  }
+
 
   return (
     <div className="flex flex-col items-center text-center ">
@@ -13,9 +43,10 @@ export default function Cadastro() {
       </a>
 
       <form
-        action="#"
+       // action="#"
         method="post"
-        className="mt-6 flex flex-col w-96 text-white text-left gap-8 text-2xl"
+        className="mt-6 flex flex-col w-96 text-white text-left gap-8 text-2xl mb-16"
+        onSubmit={ handleSignupForm }
       >
         <h2 className="text-white font-semibold text-6xl mt-10 bg-purple py-8 text-center">
           Criar Conta
@@ -77,6 +108,18 @@ export default function Cadastro() {
             name="phone"
             id="phone"
             placeholder="85 987654321"
+            className="clear-both  h-12 bg-transparent border-2 border-purple w-[100%] text-[1vw]  px-4 font-openSans font-semibold text-white"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="clear-both w-full">
+            Email
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="fulano@gmail.com"
             className="clear-both  h-12 bg-transparent border-2 border-purple w-[100%] text-[1vw]  px-4 font-openSans font-semibold text-white"
           />
         </div>
