@@ -1,6 +1,8 @@
 import BlurCircle from '../assets/blurcircle.svg'
 import MicImg from '../assets/mic-removebg-preview.png'
 
+
+
 export function Home() {
   return (
     <div className="w-full px-20 bg-back h-fit">
